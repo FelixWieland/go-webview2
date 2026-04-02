@@ -136,6 +136,10 @@ type rpcMessage struct {
 
 func jsString(v interface{}) string { b, _ := json.Marshal(v); return string(b) }
 
+func (w *webview) Browser() browser {
+	return w.browser
+}
+
 func (w *webview) msgcb(msg string) {
 	d := rpcMessage{}
 	if err := json.Unmarshal([]byte(msg), &d); err != nil {
